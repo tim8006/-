@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <style>
+        .image-frame {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Image</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="image">Choose an image:</label>
+                <input type="file" class="form-control-file" id="image" name="file">
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+        <hr>
+        {% if image_path %}
+        <div class="image-frame">
+            <img src="{{ url_for('upload_image', image_path=image_path) }}" alt="Uploaded Image" class="img-fluid">
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
